@@ -78,6 +78,7 @@ body{
   font-size: 25px;
   border-radius: 5px;
   max-width: 850px;
+  letter-spacing: 1px;
   transition: .2s ease;
 }
 
@@ -90,6 +91,7 @@ body{
   font-weight: bold;
   font-size: 35px;
   max-width: 850px;
+  letter-spacing: 2px;
 }
 
 .btn.correct{
