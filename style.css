@@ -9,6 +9,8 @@ body{
   width: 100vw;
   height: 100vh;
   background-color: wheat;
+  display:grid;
+  justify-content: center;
 }
 
 .second-header{
@@ -17,6 +19,7 @@ body{
   align-items: center;
   font-size: 30px;
   font-weight: bold;
+  gap: 3rem;
 
 }
 
@@ -27,3 +30,77 @@ body{
   padding: 30px 90px;
 }
 
+.head-button{
+  height: 3rem;
+  width: 18rem;
+  border-radius: 10px;
+  font-size: 25px;
+  font-weight: 400;
+  transition: .3s ease-in-out;
+  background:rgb(0, 109, 160);
+  color: aliceblue;
+}
+
+.head-button:hover{
+  background:rgb(80, 190, 241);
+  color: rgb(0, 0, 0);
+}
+
+#start-btn{
+  font-weight: bold;
+  letter-spacing: 5px;
+  height: 5rem;
+}
+
+#start-btn:hover{
+  box-shadow: rgb(71, 71, 71) 0 0 10px 2px;
+}
+
+.main-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 75vw;
+  height: 50vh;
+  background: rgb(174, 175, 175);
+  border-radius: 20px;
+  box-shadow: 0 0 10px 2px;
+  font-size: 30px;
+}
+
+.btn-grid{
+  display: grid;
+  gap: 10px;
+}
+
+.btn{
+  padding: 10px;
+  font-size: 25px;
+  border-radius: 5px;
+  max-width: 850px;
+  transition: .2s ease;
+}
+
+.btn:hover{
+  box-shadow: 0 0 10px 2px;
+}
+
+#question{
+  margin-bottom: 3rem;
+  font-weight: bold;
+  font-size: 35px;
+  max-width: 850px;
+}
+
+.btn.correct{
+  background: rgb(118, 202, 107);
+}
+
+.btn.wrong{
+  background: rgb(194, 29, 62);
+  color: aliceblue;
+}
+
+.question-hide{
+  display: none;
+}
