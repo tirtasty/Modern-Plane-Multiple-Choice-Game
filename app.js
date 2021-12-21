@@ -3,13 +3,15 @@ var startButton = document.getElementById("start-btn")
 var questionContainerLine = document.getElementById("question-container")
 var questionElement = document.getElementById("question")
 var answerElement = document.getElementById("answer-btn")
+var countDown = document.getElementById("count-down")
 let shuffleQuestion, currentQuestion
 
 
-//EVENT LISTENER
+//START GAME FUNCTION
 startButton.addEventListener('click', startGame)
 
 function startGame(){
+    setTime()
     questionContainerLine.classList.remove('question-hide')
     shuffleQuestion = questions.sort(() => Math.random() - .5)
     currentQuestion = 0;
@@ -17,6 +19,20 @@ function startGame(){
     //get random question from function nextQuestion
     nextQuestion()
 }
+
+//TIMER FUNCTION
+function setTime() {
+    var secondsLeft = 60;
+    timeInterval= setInterval(function() {
+      secondsLeft--;
+      countDown.textContent = secondsLeft + " seconds remaining"
+      if(secondsLeft === 0) {
+        clearInterval(timerInterval);
+        sendMessage();
+      }
+  
+    }, 1000);
+  }
 
 function nextQuestion(){
     showQuestion(shuffleQuestion[currentQuestion])
