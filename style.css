@@ -56,13 +56,17 @@ body{
   box-shadow: rgb(71, 71, 71) 0 0 10px 2px;
 }
 
+.reset-button{
+  display: none;
+}
+
 .main-container{
   display: flex;
   justify-content: center;
   align-items: center;
   width: 75vw;
   height: 50vh;
-  background: rgb(174, 175, 175);
+  background: rgb(180, 180, 180);
   border-radius: 20px;
   box-shadow: 0 0 10px 2px;
   font-size: 30px;
@@ -93,6 +97,7 @@ body{
   max-width: 850px;
   letter-spacing: 2px;
 }
+
 
 .btn.correct{
   background: rgb(118, 202, 107);
