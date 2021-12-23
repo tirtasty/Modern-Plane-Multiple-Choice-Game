@@ -8,14 +8,15 @@ var statusMessage = document.getElementById("status")
 var selectChoice = document.getElementById("btn-answer")
 var resetBtn = document.getElementById("reset-btn")
 var message = 'GAME OVER'
+var timeInterval
 let shuffleQuestion, currentQuestion
 
 
-//START GAME FUNCTION
+//EVENT LISTENER
 startButton.addEventListener('click', startGame)
 resetBtn.addEventListener('click', resetGame)
 
-//START GAME
+//START GAME FUNTION
 function startGame(){
     setTime()
     startButton.disabled = true;
@@ -23,18 +24,21 @@ function startGame(){
     //get random question from function nextQuestion
     nextQuestion()
 }
-
+//RESET GAME FUNCTION
 function resetGame(){
-
+    countDown.textContent = '';
+    questionContainerLine.textContent = '';
+    clearInterval(timeInterval);
+    
+    startGame()
 }
 
-selectChoice.addEventListener('click', console.log("ngeclick nih"))
 
 
 //TIMER FUNCTION
 function setTime() {
     var secondsLeft = 60;
-    var timeInterval = setInterval(function() {
+    timeInterval = setInterval(function() {
         if (secondsLeft > 1) {
             countDown.textContent = secondsLeft + ' seconds remaining';
             secondsLeft--;
@@ -130,7 +134,6 @@ var questions = [
         
     }
 ]
-
 //Show question on display
 function showQuestion(question){
     questionElement.innerText = question.question
