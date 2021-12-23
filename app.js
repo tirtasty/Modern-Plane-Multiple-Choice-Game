@@ -15,6 +15,7 @@ let shuffleQuestion, currentQuestion
 //EVENT LISTENER
 startButton.addEventListener('click', startGame)
 resetBtn.addEventListener('click', resetGame)
+answerElement.addEventListener('click', console.log("hihihihi"))
 
 //START GAME FUNTION
 function startGame(){
@@ -65,7 +66,6 @@ function nextQuestion(){
     currentQuestion = 0;
     questionContainerLine.classList.remove('question-hide')
     showQuestion(shuffleQuestion[currentQuestion])
-    
 }
 //ANSWER FUNCTION
 function selectAnswer(t){
