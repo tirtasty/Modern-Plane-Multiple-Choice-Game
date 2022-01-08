@@ -11,11 +11,9 @@ var resetBtn = document.getElementById("reset-btn")
 var nextButton = document.getElementById("next-qst")
 var message = 'GAME OVER'
 var page = '.index.html'
-var score = 0;
+var score = -1;
 var timeInterval
 let shuffleQuestion, currentQuestion
-
-console.log(score)
 
 
 //EVENT LISTENER
@@ -42,7 +40,8 @@ function resetGame(){
 
 //TIMER FUNCTION
 function setTime() {
-    var secondsLeft = 120;
+    var secondsLeft = 5;
+    countDown.classList.remove('countDown')
     timeInterval = setInterval(function() {
         if (secondsLeft > 1) {
             countDown.textContent = secondsLeft + ' seconds remaining';
@@ -58,6 +57,7 @@ function setTime() {
             nextButton.classList.add('nextBtn')
             resetBtn.classList.remove('reset-button')
             startButton.disabled = false;
+            checkScore.classList.remove('highScore')
 
           }
         }, 1000);
@@ -73,8 +73,10 @@ function nextQuestion(){
     shuffleQuestion = questions.sort(() => Math.random() - .5)
     questionContainerLine.classList.remove('question-hide')
     showQuestion(shuffleQuestion[currentQuestion])
-    console.log(currentQuestion)
+    
 }
+
+
 //ANSWER FUNCTION
 function selectAnswer(t){
     var selectButton = t.target
@@ -83,6 +85,7 @@ function selectAnswer(t){
     Array.from(answerElement.children).forEach(answerElement => {
         statusCorrect(answerElement, answerElement.dataset.correct)
     })
+   
 }
 //STATUS CORRECT
 function statusCorrect(element, correct){
@@ -153,12 +156,15 @@ function showQuestion(question){
         button.classList.add('btn')
         if (answer.correct){
             button.dataset.correct = answer.correct
+            score++
         }
         button.addEventListener('click', selectAnswer)
         answerElement.appendChild(button)
         console.log(button)
 })
 }
+
+console.log(score)
 //REMOVE DEFAULT ANSWER BUTTON
 function resetAnswer(){
     answerElement.classList.add('hide')

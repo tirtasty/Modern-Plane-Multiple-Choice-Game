@@ -38,6 +38,14 @@ body{
   color: aliceblue;
 }
 
+.highScore{
+  display: none;
+}
+
+.countDown{
+  display: none;
+}
+
 .head-button:hover{
   background:rgb(80, 190, 241);
   color: rgb(0, 0, 0);
