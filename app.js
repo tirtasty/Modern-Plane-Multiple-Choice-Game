@@ -3,19 +3,28 @@ var startButton = document.getElementById("start-btn")
 var questionContainerLine = document.getElementById("question-container")
 var questionElement = document.getElementById("question")
 var answerElement = document.getElementById("answer-btn")
+var checkScore = document.getElementById("highscore-view")
 var countDown = document.getElementById("count-down")
 var statusMessage = document.getElementById("status")
 var selectChoice = document.getElementById("btn-answer")
 var resetBtn = document.getElementById("reset-btn")
+var nextButton = document.getElementById("next-qst")
 var message = 'GAME OVER'
+var page = '.index.html'
+var score = 0;
 var timeInterval
 let shuffleQuestion, currentQuestion
 
+console.log(score)
+
 
 //EVENT LISTENER
-startButton.addEventListener('click', startGame)
-resetBtn.addEventListener('click', resetGame)
-answerElement.addEventListener('click', console.log("hihihihi"))
+startButton.addEventListener('click', startGame);
+resetBtn.addEventListener('click', resetGame);
+nextButton.addEventListener('click', nextQuestion)
+checkScore.addEventListener('click', console.log("holla"))
+    
+
 
 //START GAME FUNTION
 function startGame(){
@@ -27,14 +36,8 @@ function startGame(){
 }
 //RESET GAME FUNCTION
 function resetGame(){
-    countDown.textContent = '';
-    questionContainerLine.textContent = '';
-    clearInterval(timeInterval);
-    
-    startGame()
+    location.reload();
 }
-
-
 
 //TIMER FUNCTION
 function setTime() {
@@ -62,25 +65,25 @@ function setTime() {
 //NEXT QUESTION FUNCTION
 function nextQuestion(){
     resetAnswer()
-    shuffleQuestion = questions.sort(() => Math.random() - 0.5)
+    shuffleQuestion = questions.sort(() => Math.random() - .5)
     currentQuestion = 0;
     questionContainerLine.classList.remove('question-hide')
-    showQuestion(shuffleQuestion[currentQuestion])
+    showQuestion(shuffleQuestion[currentQuestion++])
 }
 //ANSWER FUNCTION
 function selectAnswer(t){
     var selectButton = t.target
     var correct = selectButton.dataset.correct
     statusCorrect(document.body, correct)
-    Array.from(answerElement.children).forEach(button => {
-        statusCorrect(button, button.dataset.correct)
+    Array.from(answerElement.children).forEach(answerElement => {
+        statusCorrect(answerElement, answerElement.dataset.correct)
     })
 }
 //STATUS CORRECT
 function statusCorrect(element, correct){
     ClearStatus(element)
         if(correct){
-            element.classList.add('correct')
+            element.classList.add('correct');
         }else{
             element.classList.add('wrong')
         }
@@ -134,6 +137,8 @@ var questions = [
         
     }
 ]
+console.log(questions)
+
 //Show question on display
 function showQuestion(question){
     questionElement.innerText = question.question

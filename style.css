@@ -45,6 +45,11 @@ body{
   color: rgb(0, 0, 0);
 }
 
+#next-qst{
+  margin-top: 2rem;
+  width: 10rem;
+}
+
 #start-btn{
   font-weight: bold;
   letter-spacing: 5px;
