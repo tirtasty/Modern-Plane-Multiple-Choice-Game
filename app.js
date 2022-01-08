@@ -22,7 +22,6 @@ console.log(score)
 startButton.addEventListener('click', startGame);
 resetBtn.addEventListener('click', resetGame);
 nextButton.addEventListener('click', nextQuestion)
-checkScore.addEventListener('click', console.log("holla"))
     
 
 
@@ -31,7 +30,8 @@ function startGame(){
     startButton.classList.add('startButton')
     setTime()
     startButton.disabled = true;
-    resetBtn.classList.remove('reset-button')
+    //Make reset button appear
+    nextButton.classList.remove('nextBtn')
     //get random question from function nextQuestion
     nextQuestion()
 }
@@ -42,7 +42,7 @@ function resetGame(){
 
 //TIMER FUNCTION
 function setTime() {
-    var secondsLeft = 6;
+    var secondsLeft = 120;
     timeInterval = setInterval(function() {
         if (secondsLeft > 1) {
             countDown.textContent = secondsLeft + ' seconds remaining';
@@ -55,7 +55,10 @@ function setTime() {
             questionContainerLine.textContent = '';
             clearInterval(timeInterval);
             displayMessage();
+            nextButton.classList.add('nextBtn')
+            resetBtn.classList.remove('reset-button')
             startButton.disabled = false;
+
           }
         }, 1000);
   }
@@ -66,10 +69,11 @@ function setTime() {
 //NEXT QUESTION FUNCTION
 function nextQuestion(){
     resetAnswer()
-    shuffleQuestion = questions.sort(() => Math.random() - .5)
     currentQuestion = 0;
+    shuffleQuestion = questions.sort(() => Math.random() - .5)
     questionContainerLine.classList.remove('question-hide')
-    showQuestion(shuffleQuestion[currentQuestion++])
+    showQuestion(shuffleQuestion[currentQuestion])
+    console.log(currentQuestion)
 }
 //ANSWER FUNCTION
 function selectAnswer(t){
