@@ -60,8 +60,13 @@ body{
   box-shadow: rgb(71, 71, 71) 0 0 10px 2px;
 }
 
+.startButton{
+  display: none;
+}
+
 .reset-button{
   display: none;
+  margin-bottom: 2rem;
 }
 
 .main-container{

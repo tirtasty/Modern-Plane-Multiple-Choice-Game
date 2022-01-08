@@ -28,6 +28,7 @@ checkScore.addEventListener('click', console.log("holla"))
 
 //START GAME FUNTION
 function startGame(){
+    startButton.classList.add('startButton')
     setTime()
     startButton.disabled = true;
     resetBtn.classList.remove('reset-button')
@@ -41,7 +42,7 @@ function resetGame(){
 
 //TIMER FUNCTION
 function setTime() {
-    var secondsLeft = 60;
+    var secondsLeft = 6;
     timeInterval = setInterval(function() {
         if (secondsLeft > 1) {
             countDown.textContent = secondsLeft + ' seconds remaining';
