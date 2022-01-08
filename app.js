@@ -1,4 +1,4 @@
-//GOLBAL VARIABLE
+//GLOBAL VARIABLE
 var startButton = document.getElementById("start-btn")
 var questionContainerLine = document.getElementById("question-container")
 var questionElement = document.getElementById("question")
@@ -8,97 +8,113 @@ var countDown = document.getElementById("count-down")
 var statusMessage = document.getElementById("status")
 var selectChoice = document.getElementById("btn-answer")
 var resetBtn = document.getElementById("reset-btn")
-var nextButton = document.getElementById("next-qst")
-var message = 'GAME OVER'
-var page = '.index.html'
-var score = -1;
-var timeInterval
-let shuffleQuestion, currentQuestion
+var liveScore = document.getElementById("view-score")
+var currentQuestion = 0;
+var score = 0;
+var secondsLeft = 30;
+
+// let shuffleQuestion, currentQuestion
 
 
 //EVENT LISTENER
 startButton.addEventListener('click', startGame);
 resetBtn.addEventListener('click', resetGame);
-nextButton.addEventListener('click', nextQuestion)
-    
 
 
 //START GAME FUNTION
 function startGame(){
-    startButton.classList.add('startButton')
+    //timer on when it starts
     setTime()
-    startButton.disabled = true;
-    //Make reset button appear
-    nextButton.classList.remove('nextBtn')
+    //start button gone when player is playing
+    startButton.classList.add('startButton')
+    //live score is 
+    liveScore.classList.remove('viewScore')
+    //Dispaly the score when player play the game
+    liveScore.innerText = 'Your Score  ' + score;
     //get random question from function nextQuestion
     nextQuestion()
 }
 //RESET GAME FUNCTION
 function resetGame(){
-    location.reload();
+    var page = '.index.html'
+    location.reload(page);
 }
 
 //TIMER FUNCTION
 function setTime() {
-    var secondsLeft = 5;
     countDown.classList.remove('countDown')
     timeInterval = setInterval(function() {
         if (secondsLeft > 1) {
-            countDown.textContent = secondsLeft + ' seconds remaining';
+            countDown.textContent = secondsLeft + ' seconds';
             secondsLeft--;
           } else if (secondsLeft === 1) {
-            countDown.textContent = secondsLeft + ' second remaining';
+            countDown.textContent = secondsLeft + ' second';
             secondsLeft--;
           } else {
             countDown.textContent = '';
             questionContainerLine.textContent = '';
             clearInterval(timeInterval);
             displayMessage();
-            nextButton.classList.add('nextBtn')
+            //Highscore and reset button appear when the game is over
             resetBtn.classList.remove('reset-button')
-            startButton.disabled = false;
             checkScore.classList.remove('highScore')
-
+            //diplay message function
+            function displayMessage() {
+                var message = 'GAME OVER'
+                questionContainerLine.textContent = message;
+              }
           }
         }, 1000);
-  }
-  function displayMessage() {
-    questionContainerLine.textContent = message;
   }
 
 //NEXT QUESTION FUNCTION
 function nextQuestion(){
-    resetAnswer()
-    currentQuestion = 0;
-    shuffleQuestion = questions.sort(() => Math.random() - .5)
+    resetAnswer();
     questionContainerLine.classList.remove('question-hide')
-    showQuestion(shuffleQuestion[currentQuestion])
-    
+    showQuestion(questions[currentQuestion])
 }
 
+//Show question on display
+function showQuestion(question){
+    questionElement.innerText = question.question
+    question.answer.forEach(answer => {
+        var button = document.createElement('button')
+        button.innerText = answer.text
+        button.classList.add('selectButton')
+        button.classList.add('btn')
+        if (answer.correct){
+            button.dataset.correct = answer.correct
+            score        }
+        button.addEventListener('click', selectAnswer)
+        answerElement.appendChild(button)
+})
+}
+
+//REMOVE DEFAULT ANSWER BUTTON
+function resetAnswer(){
+    answerElement.classList.add('hide')
+    while (answerElement.firstChild){
+        answerElement.removeChild
+        (answerElement.firstChild)
+    }
+}
 
 //ANSWER FUNCTION
 function selectAnswer(t){
     var selectButton = t.target
     var correct = selectButton.dataset.correct
-    statusCorrect(document.body, correct)
-    Array.from(answerElement.children).forEach(answerElement => {
-        statusCorrect(answerElement, answerElement.dataset.correct)
-    })
-   
-}
-//STATUS CORRECT
-function statusCorrect(element, correct){
-    ClearStatus(element)
-        if(correct){
-            element.classList.add('correct');
+    if (selectButton = correct){
+        score++;
+        liveScore.innerText = 'Your Score  ' + score;
         }else{
-            element.classList.add('wrong')
-        }
+            secondsLeft -= 10
+        }  
+    if (currentQuestion < 3){
+        currentQuestion++;
+    }else{
+        secondsLeft -= 30;
     }
-function ClearStatus(element){
-    element.classList.remove('correct')
-    element.classList.remove('wrong')
+    nextQuestion(questions[currentQuestion])
 }
 
 //Question array
@@ -145,31 +161,3 @@ var questions = [
         
     }
 ]
-console.log(questions)
-
-//Show question on display
-function showQuestion(question){
-    questionElement.innerText = question.question
-    question.answer.forEach(answer => {
-        var button = document.createElement('button')
-        button.innerText = answer.text
-        button.classList.add('btn')
-        if (answer.correct){
-            button.dataset.correct = answer.correct
-            score++
-        }
-        button.addEventListener('click', selectAnswer)
-        answerElement.appendChild(button)
-        console.log(button)
-})
-}
-
-console.log(score)
-//REMOVE DEFAULT ANSWER BUTTON
-function resetAnswer(){
-    answerElement.classList.add('hide')
-    while (answerElement.firstChild){
-        answerElement.removeChild
-        (answerElement.firstChild)
-    }
-}
