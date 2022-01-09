@@ -14,6 +14,7 @@ var historyHigh = document.getElementById('historyScore')
 var currentQuestion = 0;
 var score = 0;
 var secondsLeft = 30;
+var historyLocal = []
 
 //EVENT LISTENER
 startButton.addEventListener('click', startGame);
@@ -125,10 +126,10 @@ function showScore() {
     if (name == ""){
         name = "Anonymous"
     }
-    var history = name + " : " + score
+    var newScore = name + " : " + score
     //Set score to local storage
-    localStorage.setItem("score", JSON.stringify(history));
-    console.log(history)
+    historyLocal.push(newScore)
+    localStorage.setItem("score", JSON.stringify(historyLocal));
 
     //Display Score
     finalScore.innerText = name + "'s score is " + score
