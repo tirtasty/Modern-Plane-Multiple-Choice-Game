@@ -15,10 +15,9 @@ body{
 
 .second-header{
   display: grid;
-  justify-content: center;
+  justify-items: center;
   align-items: center;
   font-size: 30px;
-  gap: 3rem;
 
 }
 
@@ -102,6 +101,8 @@ body{
   font-size: 25px;
   border-radius: 5px;
   max-width: 850px;
+  width: 25rem;
+  justify-self: center;
   letter-spacing: 1px;
   transition: .2s ease;
 }
@@ -111,11 +112,27 @@ body{
 }
 
 #question{
-  margin-bottom: 3rem;
+  margin-bottom: 5rem;
   font-weight: bold;
   font-size: 35px;
   max-width: 850px;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
+}
+
+#finalScore{
+  font-size: 30px;
+  font-weight: 700;
+  margin-top: 3rem;
+  margin-bottom: -3rem;
+}
+
+.correct{
+  background: rgb(118, 202, 107);
+}
+
+.wrong{
+  background: rgb(194, 29, 62);
+  color: aliceblue;
 }
 
 .question-hide{

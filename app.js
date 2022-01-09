@@ -6,15 +6,14 @@ var answerElement = document.getElementById("answer-btn")
 var checkScore = document.getElementById("highscore-view")
 var countDown = document.getElementById("count-down")
 var statusMessage = document.getElementById("status")
+var finalScore = document.getElementById("finalScore")
 var selectChoice = document.getElementById("btn-answer")
 var resetBtn = document.getElementById("reset-btn")
 var liveScore = document.getElementById("view-score")
+var historyHigh = document.getElementById('historyScore')
 var currentQuestion = 0;
 var score = 0;
 var secondsLeft = 30;
-
-// let shuffleQuestion, currentQuestion
-
 
 //EVENT LISTENER
 startButton.addEventListener('click', startGame);
@@ -31,7 +30,7 @@ function startGame(){
     liveScore.classList.remove('viewScore')
     //Dispaly the score when player play the game
     liveScore.innerText = 'Your Score  ' + score;
-    //get random question from function nextQuestion
+    //get NextQuestion
     nextQuestion()
 }
 //RESET GAME FUNCTION
@@ -63,6 +62,8 @@ function setTime() {
                 var message = 'GAME OVER'
                 questionContainerLine.textContent = message;
               }
+            //Show score function
+            showScore();
           }
         }, 1000);
   }
@@ -115,6 +116,35 @@ function selectAnswer(t){
         secondsLeft -= 30;
     }
     nextQuestion(questions[currentQuestion])
+}
+
+//Show Score Function When Game Over
+function showScore() {
+    liveScore.classList.add('viewScore')
+    var name = prompt ("Enter your name")
+    if (name == ""){
+        name = "Anonymous"
+    }
+    var history = name + " : " + score
+    //Set score to local storage
+    localStorage.setItem("score", JSON.stringify(history));
+    console.log(history)
+
+    //Display Score
+    finalScore.innerText = name + "'s score is " + score
+
+    
+}
+
+//View Highscore History
+checkScore.addEventListener('click', scoreHistory)
+
+function scoreHistory(){
+    questionContainerLine.classList.add('question-hide')
+    historyHigh.classList.remove('historyScore')
+
+    historyHigh.textContent = localStorage.getItem("score")
+
 }
 
 //Question array
