@@ -28,26 +28,23 @@ https://github.com/tirtasty/Modern-Plane-Multiple-Choice-Game.git
 ## Usage
 
 ** Once you launch the page, the homepage will be serve with "Start" button as picture below and once you click the button tge game will begin.
-![Homepage](./assets/images/homepage.PNG)
+![Homepage](./assets/homepage.PNG)
 
-** And then it will continue with confirmation prompt that ask will you include lowercase letter.
-![Lowercase Letter Option](./images/lowercaseOption.PNG)
+** And then the game begin, timer start counting down for 30 seconds, the question appears and once you hit the correct asnwer, your score will inrement but once you hit a wrong answer the time will taken for 10 seconds. You will have 4 question in the game.
+![Game play](./assets/gameBegin.PNG)
 
-** And then it will continue with confirmation prompt that ask will you include uppercase letter.
-![Uppercase Letter Option](./images/uppercaseOption.PNG)
+** Once you answer all the question or you fail to finished the game by keep hitting wrong answer. Game Over message will appear follow with promt to fill your name in it so we can keep track the high score for futur reference.
+![Game Over and Name for score](./assets/insertName.PNG)
+![Game Over and Name for score](./assets/gameOver.PNG)
 
-** And then it will continue with confirmation prompt that ask will you include symbol character.
-![Symbol Character Option](./images/symbolOption.PNG)
+** And there is highscore button which keep track the score everytime we play.
+![Highscore Game](./assets/highScore.PNG)
 
-** And then it will continue with confirmation prompt that ask will you include number.
-![Number Option](./images/numberOption.PNG)
-
-** Then after that you just need to generate password by click generate password button.
-![Generate Button](./images/generateButton.PNG)
-![The result](./images/result.PNG)
+** And there is play again button if you want to play again.
+![Play Again](./assets/playAgain.PNG)
 
 ** This the demo how the app will works
-![Demo of the apps work](./images/appDemo.gif)
+![Demo of the apps work](./assets/appDemo.gif)
 
 ---
 ## Contributors
