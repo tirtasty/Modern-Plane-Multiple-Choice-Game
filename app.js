@@ -30,7 +30,7 @@ function startGame(){
     liveScore.classList.remove('viewScore')
     //Dispaly the score when player play the game
     liveScore.innerText = 'Your Score  ' + score;
-    //get NextQuestion
+    //get extQuestion
     nextQuestion()
 }
 //RESET GAME FUNCTION
