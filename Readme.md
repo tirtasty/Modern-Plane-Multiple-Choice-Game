@@ -27,8 +27,8 @@ https://github.com/tirtasty/Modern-Plane-Multiple-Choice-Game.git
 
 ## Usage
 
-** Once you launch the page, automatically the prompt will appear and will ask to input the number between 8 - 128. The valid value will be if you input the number less than 8 and more than 128.
-![Character Amount Option](./images/characterAmount.PNG)
+** Once you launch the page, the homepage will be serve with "Start" button as picture below and once you click the button tge game will begin.
+![Homepage](./assets/images/homepage.PNG)
 
 ** And then it will continue with confirmation prompt that ask will you include lowercase letter.
 ![Lowercase Letter Option](./images/lowercaseOption.PNG)
