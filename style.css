@@ -138,3 +138,7 @@ body{
 .question-hide{
   display: none;
 }
+
+.historyScore{
+  display: none;
+}
